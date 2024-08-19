@@ -5,7 +5,7 @@ import GameGrid from "./components/GameGrid.tsx";
 import useGenres from "./hooks/useGenres.ts";
 
 function App() {
-  const { error, genres } = useGenres();
+  const { error, data } = useGenres();
 
   return (
     <Grid
@@ -21,7 +21,7 @@ function App() {
         <GridItem area="aside">
           {error && <Text>{error}</Text>}
           <ul>
-            {genres.map((genre) => (
+            {data.map((genre) => (
               <li key={genre.id}>{genre.name}</li>
             ))}
           </ul>
