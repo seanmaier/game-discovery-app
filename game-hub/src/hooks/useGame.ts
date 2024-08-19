@@ -40,7 +40,8 @@ const useGame = () => {
             .catch(err => {
                 if (err instanceof CanceledError) return;
                 setLoading(false)
-                setError(err.message)});
+                setError(err.message)
+            });
 
         return () => controller.abort();
     }, []);
