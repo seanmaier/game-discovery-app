@@ -1,30 +1,27 @@
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { Show } from "@chakra-ui/react";
 import Navbar from "./components/Navbar.tsx";
 import GameGrid from "./components/GameGrid.tsx";
-import useGenres from "./hooks/useGenres.ts";
+import GenreList from "./components/GenreList.tsx";
 
 function App() {
-  const { error, data } = useGenres();
-
   return (
     <Grid
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem area="nav">
         <Navbar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">
-          {error && <Text>{error}</Text>}
-          <ul>
-            {data.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
+        <GridItem paddingX={5} area="aside">
+          <GenreList />
         </GridItem>
       </Show>
       <GridItem area="main">
