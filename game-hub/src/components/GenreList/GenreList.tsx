@@ -6,9 +6,10 @@ import GenreContainer from "./GenreContainer.tsx";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectGenre, onSelectGenre }: Props) => {
   const { error, data, isLoading } = useGenres();
   const skeleton = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
@@ -28,17 +29,17 @@ const GenreList = ({ onSelectGenre }: Props) => {
         <GenreContainer key={genre.id}>
           <ListItem>
             <HStack>
+              <Image
+                boxSize={"32px"}
+                borderRadius={8}
+                src={getCroppedUrl(genre.image_background)}
+              ></Image>
               <Button
+                fontWeight={selectGenre?.id === genre.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 variant="link"
                 fontSize={"lg"}
               >
-                <Image
-                  marginEnd={2}
-                  boxSize={"32px"}
-                  borderRadius={8}
-                  src={getCroppedUrl(genre.image_background)}
-                ></Image>
                 {genre.name}
               </Button>
             </HStack>
