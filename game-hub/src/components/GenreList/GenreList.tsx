@@ -1,6 +1,6 @@
 import { Image, Button, HStack, ListItem, List } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres.ts";
-import getCroppedUrl from "../services/img-service.ts";
+import useGenres from "../../hooks/useGenres.ts";
+import getCroppedUrl from "../../services/img-service.ts";
 import GenreSkeleton from "./GenreSkeleton.tsx";
 import GenreContainer from "./GenreContainer.tsx";
 
@@ -21,10 +21,14 @@ const GenreList = () => {
           </GenreContainer>
         ))}
       {data.map((genre) => (
-        <GenreContainer>
-          <ListItem key={genre.id}>
+        <GenreContainer key={genre.id}>
+          <ListItem>
             <HStack>
-              <Button variant="link" fontSize={"lg"}>
+              <Button
+                onClick={() => console.log(genre)}
+                variant="link"
+                fontSize={"lg"}
+              >
                 <Image
                   marginEnd={2}
                   boxSize={"32px"}
