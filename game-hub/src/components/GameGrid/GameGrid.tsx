@@ -4,6 +4,7 @@ import GameCard from "./GameCard.tsx";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
 import { Genre } from "../../hooks/useGenres.ts";
+import GameMenu from "./GameMenu.tsx";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -18,6 +19,7 @@ const GameGrid = ({ selectedGenre }: Props) => {
   return (
     <>
       {error && <Text>{error}</Text>}
+      <GameMenu />
       <SimpleGrid
         padding="10px"
         columns={{ sm: 1, md: 2, lg: 3, "2xl": 5 }}
