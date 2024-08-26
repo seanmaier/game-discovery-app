@@ -1,10 +1,5 @@
 import useData from "./useData.ts";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "./useGame.ts";
 
 const usePlatforms = () => useData<Platform>("/platforms/lists/parents");
 
