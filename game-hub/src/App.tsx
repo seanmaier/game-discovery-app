@@ -11,6 +11,7 @@ import { Platform } from "./hooks/useGame.ts";
 export interface GameQuery {
   platform: Platform | null;
   genre: Genre | null;
+  searchText: string;
 }
 
 function App() {
@@ -28,7 +29,9 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <Navbar />
+        <Navbar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem paddingX={5} area="aside">
